@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue v-model语法糖（双向数据绑定）</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <input type="text" v-model = 'msg'> -->
+        <input type="text" v-bind:value='msg' v-on:input = 'valueChange'>
+        <h3>{{ msg }}</h3>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data(){
+                return {
+                    msg:"双向数据绑定"
+                }
+            },
+            methods:{
+                valueChange(e) {
+                    console.log(e.target.value),
+                    this.msg = e.target.value
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>
